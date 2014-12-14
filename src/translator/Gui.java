@@ -105,6 +105,11 @@ public class Gui extends javax.swing.JFrame {
         jScrollPane1.setViewportView(logger);
 
         clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,42 +140,59 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lexBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lexBtnActionPerformed
-        CharStream ch = new ANTLRStringStream(inputText.getText());
-        AntieLexer lex = new AntieLexer(ch);
-        String resultText = "";
-        boolean run = true;
-        while (!lex.failed() && run) {
-            Token t = lex.nextToken();
-            if (t.getText() == null) {
-                break;
+        logger.setText("");
+        logger.append("Starting lexical analysis..");
+        try {
+            CharStream ch = new ANTLRStringStream(inputText.getText());
+            AntieLexer lex = new AntieLexer(ch);
+            CommonTokenStream tokenStream = new CommonTokenStream(lex);
+            AntieParser syn = new AntieParser(tokenStream);
+
+            syn.eval();
+            logger.append(lex.getOutput());
+            if (lex.isErrorFlag()) {
+                logger.append(lex.getError());
+                logger.setBackground(Color.RED);
+                logger.append("\nFailed");
+            } else {
+                logger.setBackground(Color.GREEN);
+                logger.append("\nSuccess");
             }
-            System.out.println(t.getType() + ", " + t.getText());
-            resultText += t.getText();
+        } catch (RecognitionException io) {
+
         }
-        System.out.println(resultText);
     }//GEN-LAST:event_lexBtnActionPerformed
 
     private void synBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_synBtnActionPerformed
-        CharStream ch = new ANTLRStringStream(inputText.getText());
-        AntieLexer lex = new AntieLexer(ch);
-        CommonTokenStream tokenStream = new CommonTokenStream(lex);
-        AntieParser syn = new AntieParser(tokenStream);
+        logger.setText("");
+        logger.append("Starting syntax analysis..");
 
         try {
+            CharStream ch = new ANTLRStringStream(inputText.getText());
+            AntieLexer lex = new AntieLexer(ch);
+            CommonTokenStream tokenStream = new CommonTokenStream(lex);
+            AntieParser syn = new AntieParser(tokenStream);
+
             syn.eval();
-            System.out.println("Result: " + !syn.failed());
-            /*if () {
+            logger.append(syn.getOutput());
+            if (syn.isErrorFlag()) {
                 logger.append(syn.getError());
-                logger.setBackground(Color.red);
-            }*/
+                logger.setBackground(Color.RED);
+                logger.append("\nFailed");
+            } else {
+                logger.setBackground(Color.GREEN);
+                logger.append("\nSuccess");
+            }
         } catch (RecognitionException io) {
-            System.out.println("Chyba překladu (syn)");
+
         }
     }//GEN-LAST:event_synBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        logger.setText("");
+        logger.setBackground(Color.WHITE);
+    }//GEN-LAST:event_clearBtnActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -29,12 +29,20 @@ public class AntieParser extends Parser {
         return errorFlag;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public String getOutput() {
+        return output;
+    }
+
     // delegates
     public Parser[] getDelegates() {
         return new Parser[]{};
     }
 
-	// delegators
+    // delegators
     public AntieParser(TokenStream input) {
         this(input, new RecognizerSharedState());
     }
@@ -54,16 +62,16 @@ public class AntieParser extends Parser {
     }
 
     public void reportError(RecognitionException e, String pravidlo) {
-        error += "nalezena chyba v pravidle " + pravidlo + "\n";
+        error += "\nsyntax error in " + pravidlo+ " at " +e.line +" " + e.charPositionInLine;
         System.out.println(e.getMessage() + pravidlo + " parser");
         errorFlag = true;
     }
 
-	// $ANTLR start "eval"
+    // $ANTLR start "eval"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:3:1: eval : mainrule ;
     public final void eval() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:3:6: ( mainrule )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:3:6: ( mainrule )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:3:8: mainrule
             {
                 pushFollow(FOLLOW_mainrule_in_eval10);
@@ -73,7 +81,7 @@ public class AntieParser extends Parser {
             }
             //output+= "Syn. An. nasel shodu s pravidlem eval\n";
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"eval");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -81,11 +89,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "eval"
 
-	// $ANTLR start "mainrule"
+    // $ANTLR start "mainrule"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:5:1: mainrule : command '{' subrule '}' ;
     public final void mainrule() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:5:9: ( command '{' subrule '}' )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:5:9: ( command '{' subrule '}' )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:5:11: command '{' subrule '}'
             {
                 pushFollow(FOLLOW_command_in_mainrule17);
@@ -101,7 +109,7 @@ public class AntieParser extends Parser {
             }
             //output+= "Syn. An. nasel shodu s pravidlem stat\n";
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"mainrule");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -109,11 +117,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "mainrule"
 
-	// $ANTLR start "subrule"
+    // $ANTLR start "subrule"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:7:1: subrule : type P obj P hash ;
     public final void subrule() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:7:9: ( type P obj P hash )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:7:9: ( type P obj P hash )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:7:11: type P obj P hash
             {
                 pushFollow(FOLLOW_type_in_subrule28);
@@ -133,7 +141,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"subrule");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -141,18 +149,18 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "subrule"
 
-	// $ANTLR start "command"
+    // $ANTLR start "command"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:13:1: command : ID ;
     public final void command() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:13:9: ( ID )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:13:9: ( ID )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:13:11: ID
             {
                 match(input, ID, FOLLOW_ID_in_command108);
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"command");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -160,11 +168,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "command"
 
-	// $ANTLR start "type"
+    // $ANTLR start "type"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:15:1: type : '\"type\"' S str ;
     public final void type() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:15:7: ( '\"type\"' S str )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:15:7: ( '\"type\"' S str )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:15:9: '\"type\"' S str
             {
                 match(input, 10, FOLLOW_10_in_type117);
@@ -176,7 +184,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"type");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -184,11 +192,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "type"
 
-	// $ANTLR start "obj"
+    // $ANTLR start "obj"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:17:1: obj : '\"object\"' S object ;
     public final void obj() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:17:6: ( '\"object\"' S object )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:17:6: ( '\"object\"' S object )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:17:8: '\"object\"' S object
             {
                 match(input, 9, FOLLOW_9_in_obj130);
@@ -200,7 +208,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"obj");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -208,11 +216,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "obj"
 
-	// $ANTLR start "hash"
+    // $ANTLR start "hash"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:19:1: hash : '\"hashCode\"' S str ;
     public final void hash() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:19:6: ( '\"hashCode\"' S str )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:19:6: ( '\"hashCode\"' S str )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:19:8: '\"hashCode\"' S str
             {
                 match(input, 8, FOLLOW_8_in_hash142);
@@ -224,7 +232,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"hash");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -232,11 +240,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "hash"
 
-	// $ANTLR start "str"
+    // $ANTLR start "str"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:21:1: str : '\"' ID '\"' ;
     public final void str() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:21:6: ( '\"' ID '\"' )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:21:6: ( '\"' ID '\"' )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:21:8: '\"' ID '\"'
             {
                 match(input, 7, FOLLOW_7_in_str155);
@@ -245,7 +253,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"str");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -253,11 +261,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "str"
 
-	// $ANTLR start "object"
+    // $ANTLR start "object"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:23:1: object : '{' subobject '}' ;
     public final void object() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:23:8: ( '{' subobject '}' )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:23:8: ( '{' subobject '}' )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:23:10: '{' subobject '}'
             {
                 match(input, 11, FOLLOW_11_in_object167);
@@ -269,7 +277,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"object");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -277,11 +285,11 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "object"
 
-	// $ANTLR start "subobject"
+    // $ANTLR start "subobject"
     // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:25:1: subobject : str S ( str | object ) ( options {greedy=true; } : ( P subobject ) )* ;
     public final void subobject() throws RecognitionException {
         try {
-			// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:2: ( str S ( str | object ) ( options {greedy=true; } : ( P subobject ) )* )
+            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:2: ( str S ( str | object ) ( options {greedy=true; } : ( P subobject ) )* )
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:4: str S ( str | object ) ( options {greedy=true; } : ( P subobject ) )*
             {
                 pushFollow(FOLLOW_str_in_subobject181);
@@ -334,7 +342,7 @@ public class AntieParser extends Parser {
                     switch (alt2) {
                         case 1: // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:46: ( P subobject )
                         {
-					// D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:46: ( P subobject )
+                            // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:46: ( P subobject )
                             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:26:47: P subobject
                             {
                                 match(input, P, FOLLOW_P_in_subobject200);
@@ -355,7 +363,7 @@ public class AntieParser extends Parser {
             }
 
         } catch (RecognitionException re) {
-            reportError(re);
+            reportError(re,"subobject");
             recover(input, re);
         } finally {
             // do for sure before leaving
@@ -363,7 +371,7 @@ public class AntieParser extends Parser {
     }
 	// $ANTLR end "subobject"
 
-	// Delegated rules
+    // Delegated rules
     public static final BitSet FOLLOW_mainrule_in_eval10 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_command_in_mainrule17 = new BitSet(new long[]{0x0000000000000800L});
     public static final BitSet FOLLOW_11_in_mainrule18 = new BitSet(new long[]{0x0000000000000400L});
