@@ -1,8 +1,9 @@
-package translator;
-
 // $ANTLR 3.5.1 D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g 2014-12-14 21:38:08
 
 import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class AntieParser extends Parser {

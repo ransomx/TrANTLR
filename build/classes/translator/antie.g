@@ -10,7 +10,7 @@ P 	:	',';
 S 	:	':';
 ID 	:	(('a'..'z') | ('A'..'Z') | ('@') | ('.') | ('+') | '0'..'9')+;
 
-command :	ID;
+command :	'con'|'dev'|'mes';
 
 type 	:	'"type"' S str;
 

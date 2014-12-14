@@ -1,7 +1,8 @@
-package translator;
-
 // $ANTLR 3.5.1 D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g 2014-12-14 21:38:08
 import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class AntieLexer extends Lexer {
@@ -94,7 +95,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:3:8: '\"hashCode\"'
             {
                 match("\"hashCode\"");
-                output+= "\n\"hashCode\" - ok";
+                output+= "\"hashCode\" - ok";
 
             }
 
@@ -115,7 +116,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:4:8: '\"object\"'
             {
                 match("\"object\"");
-                output+= "\n\"object\" - ok";
+                output+= "\"object\" - ok";
 
             }
 
@@ -136,7 +137,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:5:9: '\"type\"'
             {
                 match("\"type\"");
-                output+= "\n\"type\" - ok";
+                output+= "\"type\" - ok";
 
             }
 
@@ -157,7 +158,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:6:9: 'con'
             {
                 match("con");
-                output+= "\n\"con\" - ok";
+                output+= "\"con\" - ok";
             }
 
             state.type = _type;
@@ -177,7 +178,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:7:9: 'dev'
             {
                 match("dev");
-                output+= "\n\"dev\" - ok";
+                output+= "\"dev\" - ok";
             }
 
             state.type = _type;
@@ -197,7 +198,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:8:9: 'mes'
             {
                 match("mes");
-                output+= "\n\"mes\" - ok";
+                output+= "\"mes\" - ok";
             }
 
             state.type = _type;
@@ -217,7 +218,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:9:9: '{'
             {
                 match('{');
-                output+= "\n ( - ok";
+                output+= " ( - ok";
             }
 
             state.type = _type;
@@ -237,7 +238,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:10:9: '}'
             {
                 match('}');
-                output+= "\n ) - ok";
+                output+= " ) - ok";
             }
 
             state.type = _type;
@@ -257,7 +258,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:9:6: ','
             {
                 match(',');
-                output+= "\n , - ok";
+                output+= " , - ok";
             }
 
             state.type = _type;
@@ -277,7 +278,7 @@ public class AntieLexer extends Lexer {
             // D:\\Work\\GitHub\\Realvision\\Translator\\src\\translator\\antie.g:10:6: ':'
             {
                 match(':');
-                output+= "\n : - ok";
+                output+= " : - ok";
             }
 
             state.type = _type;
@@ -328,7 +329,7 @@ public class AntieLexer extends Lexer {
                     }
                     cnt1++;
                 }
-                output+= "\n ID - ok";
+                output+= " ID - ok";
             }
 
             state.type = _type;
